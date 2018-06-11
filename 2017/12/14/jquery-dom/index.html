@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,DOM,jQuery," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="DOM是Document Object Model的缩写，即文档对象模型；DOM是一种与浏览器、平台、语言无关的接口，使用该接口可以轻松地访问页面中所有的标准组件，DOM操作分为：DOM Core、HTML-DOM和CSS-DOM：  DOM Core并不专属于JavaScript，任何一种支持DOM的程序设计语言都可以使用，其中有getElementById()、getElementsByTag">
+<meta name="keywords" content="JavaScript,DOM,jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery中的DOM操作">
+<meta property="og:url" content="http://yoursite.com/2017/12/14/jquery-dom/index.html">
+<meta property="og:site_name" content="ZG-X&#39;s Notes">
+<meta property="og:description" content="DOM是Document Object Model的缩写，即文档对象模型；DOM是一种与浏览器、平台、语言无关的接口，使用该接口可以轻松地访问页面中所有的标准组件，DOM操作分为：DOM Core、HTML-DOM和CSS-DOM：  DOM Core并不专属于JavaScript，任何一种支持DOM的程序设计语言都可以使用，其中有getElementById()、getElementsByTag">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-11T05:23:43.939Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery中的DOM操作">
+<meta name="twitter:description" content="DOM是Document Object Model的缩写，即文档对象模型；DOM是一种与浏览器、平台、语言无关的接口，使用该接口可以轻松地访问页面中所有的标准组件，DOM操作分为：DOM Core、HTML-DOM和CSS-DOM：  DOM Core并不专属于JavaScript，任何一种支持DOM的程序设计语言都可以使用，其中有getElementById()、getElementsByTag">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/14/jquery-dom/"/>
+
+
+
+
+
+  <title>jQuery中的DOM操作 | ZG-X's Notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZG-X's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/14/jquery-dom/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhiGuang Xiong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZG-X's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jQuery中的DOM操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T11:56:34+08:00">
+                2017-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/《锋利的jQuery》读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">《锋利的jQuery》读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>DOM是Document Object Model的缩写，即文档对象模型；DOM是一种与浏览器、平台、语言无关的接口，使用该接口可以轻松地访问页面中所有的标准组件，DOM操作分为：DOM Core、HTML-DOM和CSS-DOM：</p>
+<ul>
+<li>DOM Core并不专属于JavaScript，任何一种支持DOM的程序设计语言都可以使用，其中有<code>getElementById()</code>、<code>getElementsByTagName()</code>、<code>getAttribute()</code>和<code>setAttribute()</code>等方法；</li>
+<li>在使用JavaScript和DOM为HTML文件编写脚本时，有许多专属于HTML-DOM的属性（如<code>document.forms</code>、<code>element.src</code>）；</li>
+<li>CSS-DOM技术的主要作用是获取和设置<code>style</code>对象的各种属性；</li>
+</ul>
+<a id="more"></a>
+<h3 id="1-查找节点"><a href="#1-查找节点" class="headerlink" title="1.查找节点"></a>1.查找节点</h3><ul>
+<li><code>text()</code>方法可以获取元素节点中的文本内容；</li>
+<li><code>attr()</code>方法可以获取元素节点的属性值，参数为要查询的属性的名字；</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $para = $(<span class="string">"p"</span>);</span><br><span class="line"><span class="keyword">var</span> p_text = $para.text(); <span class="comment">// 获取元素节点的文本内容</span></span><br><span class="line"><span class="keyword">var</span> p_attr = $para.attr(<span class="string">"title"</span>); <span class="comment">// 获取元素节点的title属性</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-创建节点"><a href="#2-创建节点" class="headerlink" title="2.创建节点"></a>2.创建节点</h3><p><code>$(html)</code>方法会根据传入的HTML标记字符串，创建一个DOM对象，并将这个DOM对象包装成一个jQuery对象后返回。<code>append()</code>方法能将创建的新元素插入到文档中。</p>
+<ul>
+<li>动态创建的新元素节点不会被自动添加到文档中，需要其他方法插入；</li>
+<li>创建单个元素时，要注意闭合标签和使用标准的XHTML格式；</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $li_1 = $(<span class="string">"&lt;li title='香蕉'&gt;香蕉&lt;/li&gt;"</span>);</span><br><span class="line"><span class="keyword">var</span> $li_2 = $(<span class="string">"&lt;li title='橘子'&gt;橘子&lt;/li&gt;"</span>);</span><br><span class="line">$(<span class="string">"ul"</span>).append($li_1).append($li_2);</span><br></pre></td></tr></table></figure>
+<h3 id="3-插入节点"><a href="#3-插入节点" class="headerlink" title="3.插入节点"></a>3.插入节点</h3><ul>
+<li><code>append()</code>：向每个匹配的元素内部追加内容，可一次追加多个内容，内容可以是DOM对象、HTML string、jQuery对象；</li>
+<li><code>appendTo()</code>：将所有匹配的元素追加到指定的元素中，<code>$(A).appendTo(B)</code>将A追加到B中；</li>
+<li><code>prepend()</code>：向每个匹配的元素内部前置内容，与<code>append()</code>类似；</li>
+<li><code>prependTo()</code>将所有匹配的元素前置到指定的元素中，与<code>appendTo()</code>类似；</li>
+<li><code>after()</code>：在每个匹配的元素之后插入内容；</li>
+<li><code>insertAfter()</code>：将所有匹配的元素插入到指定元素的后面，与<code>appendTo()</code>类似；</li>
+<li><code>before()</code>：在每个匹配的元素之前插入内容；</li>
+<li><code>insertBefore()</code>：将所有匹配的元素插入到指定的元素前面，与<code>appendTo()</code>类似；</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">".inner"</span>).append(<span class="string">"&lt;p&gt;Test&lt;/p&gt;"</span>);</span><br><span class="line">$(<span class="string">"body"</span>).append($newdiv1, [newdiv2, existingdiv1]);</span><br><span class="line">$( <span class="string">"p"</span> ).append($(<span class="string">"strong"</span>));</span><br><span class="line">$(<span class="string">"p"</span>).append(<span class="built_in">document</span>.createTextNode(<span class="string">"Hello"</span>));</span><br><span class="line">$(<span class="string">"h2"</span>).appendTo($(<span class="string">".container"</span>));</span><br><span class="line">$(<span class="string">"&lt;p&gt;Test&lt;/p&gt;"</span>).appendTo(<span class="string">".inner"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="4-删除节点"><a href="#4-删除节点" class="headerlink" title="4.删除节点"></a>4.删除节点</h3><ul>
+<li><code>remove()</code>方法删除所有匹配的元素，传入的参数用于根据jQuery表达式筛选元素，该节点包含的所有后代节点也将同时被删除，返回值是指向已被删除节点的引用；</li>
+<li><code>datach()</code>也是从DOM中去掉所有匹配的元素，但不会把匹配的元素从jQuery对象中删除，可以在将来再使用这些匹配的元素，与<code>remove()</code>不同，所有绑定的事件、附加的数据都会保留下来;</li>
+<li><code>empty()</code>清空元素中的所有后代节点；</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"ul li"</span>).remove(<span class="string">"li[title!=菠萝]"</span>);   <span class="comment">// 将&lt;li&gt;元素中title属性不等于“菠萝”的&lt;li&gt;元素删除</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-复制节点"><a href="#5-复制节点" class="headerlink" title="5.复制节点"></a>5.复制节点</h3><p><code>clone()</code>方法可以复制元素节点（包括所有匹配元素、匹配元素的下级元素、文字节点），方法中传递一个参数<code>true</code>，表示可以在复制元素的同时复制元素中所绑定的事件；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"ul li"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="keyword">this</span>).clone(<span class="literal">true</span>).appendTo(<span class="string">"body"</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="6-替换节点"><a href="#6-替换节点" class="headerlink" title="6.替换节点"></a>6.替换节点</h3><ul>
+<li><code>replaceWith()</code>方法将所有匹配的元素都替换成指定的HTML或者DOM元素；</li>
+<li><code>replaceAll()</code>作用与<code>replaceWith()</code>相同，只不过颠倒了操作顺序；</li>
+<li>在替换之前为元素绑定的事件，在替换后会与被替换的元素一起消失，需要在新元素上重新绑定事件；</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"p"</span>).replaceWith(<span class="string">"&lt;strong&gt;Some Text&lt;/strong&gt;"</span>);</span><br><span class="line">$(<span class="string">"&lt;strong&gt;Some Text&lt;/strong&gt;"</span>).replaceAll(<span class="string">"p"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="7-包裹节点"><a href="#7-包裹节点" class="headerlink" title="7.包裹节点"></a>7.包裹节点</h3><ul>
+<li><code>wrap()</code>可以将某个节点用其他标记包裹起来，可以是selector、元素、HTML string和jQuery对象；</li>
+<li><code>wrapAll()</code>会将所有匹配的元素用一个元素来包裹，如果被包裹的多个元素间有其他元素，其他元素会被放到包裹元素之后；</li>
+<li><code>wrapInner()</code>会将每个匹配的元素的子内容（包括文本节点）用其他结构化的标记包裹起来；</li>
+<li><code>unwrap()</code>用于把包裹匹配元素的父级元素移除；<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"strong"</span>).wrap(<span class="string">"&lt;b&gt;&lt;/b&gt;"</span>);        <span class="comment">// 用&lt;b&gt;标签把&lt;strong&gt;元素包裹起来</span></span><br><span class="line">&lt;b&gt;<span class="xml"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>Some Text<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">b</span>&gt;</span></span>   <span class="comment">// wrap()</span></span><br><span class="line">&lt;strong&gt;<span class="xml"><span class="tag">&lt;<span class="name">b</span>&gt;</span>Some Text<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span>   <span class="comment">// wrapInner()</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="8-属性操作"><a href="#8-属性操作" class="headerlink" title="8.属性操作"></a>8.属性操作</h3><ul>
+<li><code>attr()</code>方法获取和设置元素属性，传递一个参数获取元素属性，传递两个参数设置元素属性，如果需要同时设置多个属性，可以采用“<code>&quot;attr&quot;:&quot;value&quot;</code>”的形式；<code>removeAttr()</code>方法删除元素属性；</li>
+<li><code>prop()</code>和<code>removeProp()</code>分别用来获取在匹配元素集中的第一个元素的属性值和为匹配的元素删除设置的属性；</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"p"</span>).attr(<span class="string">"title"</span>); <span class="comment">// 获取属性</span></span><br><span class="line">$(<span class="string">"p"</span>).attr(<span class="string">"title"</span>, <span class="string">"your title"</span>); <span class="comment">// 设置属性</span></span><br><span class="line">$(<span class="string">"p"</span>).attr(<span class="string">"title"</span>:<span class="string">"your title"</span>, <span class="string">"name"</span>:<span class="string">"test"</span>); <span class="comment">// 设置多个属性</span></span><br><span class="line">$(<span class="string">"#greatphoto"</span>).attr(&#123;<span class="attr">alt</span>: <span class="string">"Beijing"</span>, <span class="attr">title</span>: <span class="string">"photo by Kelly Clark"</span>&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="9-样式操作"><a href="#9-样式操作" class="headerlink" title="9.样式操作"></a>9.样式操作</h3><ul>
+<li><code>attr()</code>方法可以获取和修改元素的属性，同样可以获取和修改元素的<code>class</code>；</li>
+<li><code>addClass()</code>方法可以为元素在原有基础上添加<code>class</code>；</li>
+<li><code>removeClass()</code>可以从匹配的元素中删除全部或指定的<code>class</code>，可以以空格的方式移除多个<code>class</code>，当不带参数时就会将<code>class</code>的值全部移除；</li>
+<li><code>toggle()</code>方法可以控制行为上的重复切换，即交替执行多个函数；</li>
+<li><code>toggleClass()</code>可以控制样式上的重复切换，如果类名存在则删除它，如果类名不存在则添加它；</li>
+<li><code>hasClass()</code>用来判断元素中是否含有某个<code>class</code>，有返回<code>true</code>否则返回<code>false</code>；与<code>is()</code>方法等价；</li>
+</ul>
+<h3 id="10-设置和获取HTML、文本和值"><a href="#10-设置和获取HTML、文本和值" class="headerlink" title="10.设置和获取HTML、文本和值"></a>10.设置和获取HTML、文本和值</h3><ul>
+<li><code>html()</code>方法类似于JavaScript中的<code>innerHTML</code>属性，可用来读取或者设置某个元素中的HTML内容；</li>
+<li><code>text()</code>方法类似于JavaScript中的<code>innerText</code>属性，可用来读取或者设置某个元素中的文本内容，<code>innerText</code>属性不适用于Firefox浏览器；</li>
+<li><code>val()</code>方法类似于JavaScript中的<code>value</code>属性，可用来设置和获取元素的值；如果元素为多选，则返回一个包含所有选择的值的数组；</li>
+<li><code>focus()</code>方法相当于JavaScript中的<code>onfocus()</code>方法，用来处理获得焦点时的事件；</li>
+<li><code>blur()</code>方法相当于JavaScript中的<code>onblur()</code>方法，用来处理失去焦点时的事件；</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;<span class="xml"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>Some Text<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="keyword">var</span> p_html = $(<span class="string">"p"</span>).html();    <span class="comment">// 获取&lt;p&gt;元素的HTML代码，“&lt;strong&gt;Some Text&lt;/strong&gt;”</span></span><br><span class="line"><span class="keyword">var</span> p_text = $(<span class="string">"p"</span>).text();    <span class="comment">// 获取&lt;p&gt;元素的文本内容，“Some Text”</span></span><br></pre></td></tr></table></figure>
+<h3 id="11-遍历节点"><a href="#11-遍历节点" class="headerlink" title="11.遍历节点"></a>11.遍历节点</h3><ul>
+<li><code>children()</code>方法用于取得匹配元素的子元素集合，<code>children()</code>方法只考虑子元素而不考虑其他后代元素；</li>
+<li><code>next()</code>方法用于取得元素后面紧邻的同辈元素；</li>
+<li><code>prev()</code>方法用于取得匹配元素前面紧邻的同辈元素；</li>
+<li><code>siblings()</code>方法用于取得匹配元素前后所有的同辈元素；</li>
+<li><code>closet()</code>方法用于取得最近的匹配元素，如果当前元素匹配则直接返回元素本身，如果不匹配则逐级向上查找，否则返回一个空的jQuery对象；</li>
+<li><code>parent()</code>获得集合中每个匹配元素的父级元素；<code>parents()</code>获得集合中每个匹配元素的祖先元素；closest()从元素本身开始，主机箱上级元素匹配，并返回最先匹配的祖先元素；</li>
+</ul>
+<h3 id="12-CSS-DOM操作"><a href="#12-CSS-DOM操作" class="headerlink" title="12.CSS-DOM操作"></a>12.CSS-DOM操作</h3><p>CSS-DOM简单来说就是读取和设置style对象的各种属性：</p>
+<ul>
+<li><code>css()</code>方法可以获取元素的样式属性，也可以设置某个元素的单个样式，同时设置多个属性时需要采取“<code>attribute:value</code>”的形式；</li>
+<li><code>height()</code>方法取得匹配元素的当前高度值，也可以设置元素的高度（默认单位为px）</li>
+<li><code>offset()</code>获取元素在当前视窗的相对偏移，返回的对象包含<code>top</code>和<code>left</code>属性，且只对可见元素有效；</li>
+<li><code>position()</code>获取元素相对于最近的一个<code>position</code>样式属性设置为<code>relative</code>或<code>absolute</code>的祖先节点的相对偏移，返回的对象也包含<code>top</code>和<code>left</code>属性；</li>
+<li><code>scrollTop()</code>和<code>scrollLeft()</code>分别获取元素的滚动条距顶端的距离和距左侧的距离，也可以传递参数指定位置；</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/DOM/" rel="tag"># DOM</a>
+          
+            <a href="/tags/jQuery/" rel="tag"># jQuery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/10/jquery-selector/" rel="next" title="jQuery中的选择器">
+                <i class="fa fa-chevron-left"></i> jQuery中的选择器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/21/jquery-event/" rel="prev" title="jQuery中的事件与动画">
+                jQuery中的事件与动画 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZhiGuang Xiong</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ZhiGuangXiong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:zhiguangxiong@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查找节点"><span class="nav-number">1.</span> <span class="nav-text">1.查找节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-创建节点"><span class="nav-number">2.</span> <span class="nav-text">2.创建节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-插入节点"><span class="nav-number">3.</span> <span class="nav-text">3.插入节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-删除节点"><span class="nav-number">4.</span> <span class="nav-text">4.删除节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-复制节点"><span class="nav-number">5.</span> <span class="nav-text">5.复制节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-替换节点"><span class="nav-number">6.</span> <span class="nav-text">6.替换节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-包裹节点"><span class="nav-number">7.</span> <span class="nav-text">7.包裹节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-属性操作"><span class="nav-number">8.</span> <span class="nav-text">8.属性操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-样式操作"><span class="nav-number">9.</span> <span class="nav-text">9.样式操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-设置和获取HTML、文本和值"><span class="nav-number">10.</span> <span class="nav-text">10.设置和获取HTML、文本和值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-遍历节点"><span class="nav-number">11.</span> <span class="nav-text">11.遍历节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-CSS-DOM操作"><span class="nav-number">12.</span> <span class="nav-text">12.CSS-DOM操作</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZhiGuang Xiong</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
