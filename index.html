@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/03/es6-promise/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/01/vue-data/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiGuang Xiong">
@@ -268,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/03/es6-promise/" itemprop="url">ES6 - Promise</a></h1>
+                <a class="post-title-link" href="/2018/05/01/vue-data/" itemprop="url">数据响应式</a></h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-03T17:03:54+08:00">
-                2018-02-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T11:38:12+08:00">
+                2018-05-01
               </time>
             
 
@@ -303,8 +303,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ES6学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">ES6学习笔记</span>
+                  <a href="/categories/Vue-js学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue.js学习笔记</span>
                   </a>
                 </span>
 
@@ -341,10 +341,11 @@
 
       
         
-          <p><code>Promise</code>是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。<code>Promise</code>简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，<code>Promise</code>是一个对象，从它可以获取异步操作的消息。</p>
+          <p>Vue 的数据响应式是基于 <code>Object.defineProperty</code> 来实现的（递归设置 <code>getter</code> 以及 <code>setter</code>）。想要某个数据是响应的， 那么必须将该数据提前在根级进行注册（放入 <code>data</code> 中）。</p>
+<p>JavaScript 中的数据类型中比较常见的复杂数据类型为：<code>Object</code>，Vue 对 <code>Object</code> 类型数据的响应式做了特殊的说明， 关于数据类型的区别请参照这里。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/03/es6-promise/#more" rel="contents">
+            <a class="btn" href="/2018/05/01/vue-data/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -395,7 +396,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/19/js-object-oriented/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/24/vue-props/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiGuang Xiong">
@@ -414,7 +415,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/19/js-object-oriented/" itemprop="url">面向对象的程序设计</a></h1>
+                <a class="post-title-link" href="/2018/04/24/vue-props/" itemprop="url">父组件、子组件与props</a></h1>
         
 
         <div class="post-meta">
@@ -426,8 +427,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T20:00:31+08:00">
-                2018-01-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-24T17:56:28+08:00">
+                2018-04-24
               </time>
             
 
@@ -449,8 +450,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/《JavaScript高级程序设计》读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">《JavaScript高级程序设计》读书笔记</span>
+                  <a href="/categories/Vue-js学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue.js学习笔记</span>
                   </a>
                 </span>
 
@@ -487,16 +488,11 @@
 
       
         
-          <h2 id="1-理解对象"><a href="#1-理解对象" class="headerlink" title="1 理解对象"></a>1 理解对象</h2><h3 id="1-1-属性类型"><a href="#1-1-属性类型" class="headerlink" title="1.1 属性类型"></a>1.1 属性类型</h3><h4 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h4><p>数据属性包含一个数据值的位置，可以读取和写入值：</p>
-<ul>
-<li><code>[[Configurable]]</code>（默认为<code>true</code>）：表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性；</li>
-<li><code>[[Enumerable]]</code>（默认为<code>true</code>）：表示能否通过for-in循环返回属性；</li>
-<li><code>[[Writable]]</code>（默认为<code>true</code>）：表示能否修改属性的值；</li>
-<li><code>[[Value]]</code>（默认为<code>undefined</code>）：包含该属性的数据值；</li>
-</ul>
+          <p>父组件给子组件传递数据时，DOM 上的属性需要是 <code>kebab-case</code> 形式，而 <code>porps</code> 上的变量名需要 <code>camelCase</code> 形式， 但是在你使用字符串模板时，父组件给子组件绑定属性就没有 <code>camelCase</code> 的限制了。</p>
+<h3 id="1-单向数据流"><a href="#1-单向数据流" class="headerlink" title="1.单向数据流"></a>1.单向数据流</h3><p>父子组件之间传递数据是单向下行绑定的，意味着父级数据的更新会通过 <code>prop</code> 向下流动到子组件中，子组件中的值将会是最新的。但是反过来不行。 这样是为了防止子组件意外改变父级组件的状态，从而导致应用的数据流向难以理解，这意味着你不应该在一个子组件内部 直接改变 通过 <code>prop</code> 传进来的数据。 如果你这样做了，Vue 会在浏览器的控制台中发出警告。 有两种情况需要改变一个 <code>props</code> 的值：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/19/js-object-oriented/#more" rel="contents">
+            <a class="btn" href="/2018/04/24/vue-props/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -547,7 +543,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/js-event/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/11/vue-component/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiGuang Xiong">
@@ -566,7 +562,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/13/js-event/" itemprop="url">事件</a></h1>
+                <a class="post-title-link" href="/2018/04/11/vue-component/" itemprop="url">组件</a></h1>
         
 
         <div class="post-meta">
@@ -578,8 +574,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T15:52:56+08:00">
-                2018-01-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T21:48:04+08:00">
+                2018-04-11
               </time>
             
 
@@ -601,8 +597,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/《JavaScript高级程序设计》读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">《JavaScript高级程序设计》读书笔记</span>
+                  <a href="/categories/Vue-js学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue.js学习笔记</span>
                   </a>
                 </span>
 
@@ -639,13 +635,11 @@
 
       
         
-          <h2 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h2><p>事件流描述的是从页面中接收事件的顺序，但IE的事件流是事件冒泡流，而Netscape Communicator的事件流是事件捕获流；</p>
-<h3 id="1-事件冒泡"><a href="#1-事件冒泡" class="headerlink" title="1.事件冒泡"></a>1.事件冒泡</h3><p>事件冒泡：事件开始时由最具体的元素（文档中嵌套层次最深的节点）接收，然后逐级向上传播到较为不具体的节点（文档）；<br>IE5.5及更早版本中的事件冒泡会跳过<html>元素（从<body>跳到document），IE9/Firefox/Chrome/Safari将事件一直冒泡到window 对象;</body></html></p>
-<h3 id="2-事件捕获"><a href="#2-事件捕获" class="headerlink" title="2.事件捕获"></a>2.事件捕获</h3><p>事件捕获：不太具体的节点应更早接收到事件，而最具体的节点应最后接收到事件，目的在于在事件到达预定目标前捕获它；<br>IE9/Safari/Chrome/Opera/Firefox也都支持事件捕获流模型；尽管“DOM2级事件”规范要求事件应从document对象开始传播，但浏览器都是从window对象开始捕获事件的；</p>
-<h3 id="3-DOM事件流"><a href="#3-DOM事件流" class="headerlink" title="3.DOM事件流"></a>3.DOM事件流</h3><p>“DOM2级事件”规定的事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段；</p>
+          <p>组件是可复用的 Vue 实例，因此与 Vue 实例具有相同的选项，如 <code>data</code>、<code>methods</code>、<code>computed</code>、<code>watch</code>、<code>components</code> 等， 不同的是组件还具有 <code>props</code> 属性，父组件可通过该属性给子组件传递数据。此外，组件还具有一系列钩子函数可以使用。</p>
+<h3 id="1-data-必须是一个函数"><a href="#1-data-必须是一个函数" class="headerlink" title="1.data 必须是一个函数"></a>1.data 必须是一个函数</h3><p>与 Vue 根实例不同的是，组件中的 <code>data</code> 必须是一个函数，同时返回一个对象，这样每个组件就可以单独的维护各自的数据， 否则组件的数据会相互影响。具体实例可参照官网。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/13/js-event/#more" rel="contents">
+            <a class="btn" href="/2018/04/11/vue-component/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -696,7 +690,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/dom-extend/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/06/vue-computed/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiGuang Xiong">
@@ -715,7 +709,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/04/dom-extend/" itemprop="url">DOM扩展</a></h1>
+                <a class="post-title-link" href="/2018/04/06/vue-computed/" itemprop="url">计算属性、方法与watch</a></h1>
         
 
         <div class="post-meta">
@@ -727,8 +721,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T13:40:13+08:00">
-                2018-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T17:45:53+08:00">
+                2018-04-06
               </time>
             
 
@@ -750,8 +744,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/《JavaScript高级程序设计》读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">《JavaScript高级程序设计》读书笔记</span>
+                  <a href="/categories/Vue-js学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue.js学习笔记</span>
                   </a>
                 </span>
 
@@ -788,10 +782,13 @@
 
       
         
-          <h2 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h2><p>Selectors API Level 1的核心是两个方法：<code>querySelector()</code>和<code>querySelectorAll()</code>，在兼容的浏览器中可通过<code>Document</code>及<code>Element</code>类型的实例调用，目前已完全支持的浏览器有IE8+/Firefox3.5+/Safari3.1+/Chrome/Opera10+；</p>
+          <p>在模板中使用表达式是十分便利的，但是这样设计的初衷是仅仅用于简单运算。在模板中使用大量的逻辑运算会使得模板变得难以维护。对于任何复杂的逻辑，都应该使用计算属性。</p>
+<p>一个最简单的翻转字符串的例子，可以将翻转之后的字符串放入一个计算属性中：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;p&gt;Original message: <span class="string">"&#123;&#123; message &#125;&#125;"</span>&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">  &lt;p&gt;Computed reversed message: "&#123;&#123; reversedMessage &#125;&#125;"&lt;/</span>p&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const app = new Vue(&#123;</span></span><br><span class="line"><span class="regexp">  el: '#app',</span></span><br><span class="line"><span class="regexp">  data: &#123;</span></span><br><span class="line"><span class="regexp">    message: 'Hello'</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  computed: &#123;</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 计算属性的 getter</span></span><br><span class="line"><span class="regexp">    reversedMessage: function () &#123;</span></span><br><span class="line"><span class="regexp">      /</span><span class="regexp">/ this 指向 Vue 实例</span></span><br><span class="line"><span class="regexp">      return this.message.split('').reverse().join('')</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br></pre></td></tr></table></figure>
+<p>你可以像绑定普通属性一样在模板中绑定计算属性。<code>reversedMessage</code> 依赖于 <code>message</code>，当 <code>message</code> 发生改变时，所有依赖 <code>reversedMessage</code> 的绑定也会更新。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/04/dom-extend/#more" rel="contents">
+            <a class="btn" href="/2018/04/06/vue-computed/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -842,7 +839,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/31/jquery-ajax/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/05/vue-template/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiGuang Xiong">
@@ -861,7 +858,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/31/jquery-ajax/" itemprop="url">jQuery与Ajax的应用</a></h1>
+                <a class="post-title-link" href="/2018/03/05/vue-template/" itemprop="url">模板语法</a></h1>
         
 
         <div class="post-meta">
@@ -873,8 +870,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-31T14:23:17+08:00">
-                2017-12-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T21:30:08+08:00">
+                2018-03-05
               </time>
             
 
@@ -896,8 +893,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/《锋利的jQuery》读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">《锋利的jQuery》读书笔记</span>
+                  <a href="/categories/Vue-js学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue.js学习笔记</span>
                   </a>
                 </span>
 
@@ -934,11 +931,13 @@
 
       
         
-          <h4 id="jQuery-ajax-settings"><a href="#jQuery-ajax-settings" class="headerlink" title="jQuery.ajax([settings])"></a>jQuery.ajax([settings])</h4><p>下面的例子发送了一个GET请求：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">'xxx.php'</span>,</span><br><span class="line">    method: <span class="string">'GET'</span>,</span><br><span class="line">    data: &#123; <span class="attr">name</span>: <span class="string">'Byron'</span>, <span class="attr">age</span>: <span class="number">24</span>, <span class="attr">sex</span>: <span class="string">'Male'</span> &#125;</span><br><span class="line">&#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">&#125;).fail(<span class="function"><span class="keyword">function</span>(<span class="params">jqXHR, textStatus</span>)</span>&#123;</span><br><span class="line">    consloe.log(textStatus);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+          <p>Vue.js 使用了基于 HTML 的模板语法，允许开发者声明式地将 DOM 绑定至底层 Vue 实例的数据。所有 Vue.js 的模板都是合法的 HTML ，所以能被遵循规范的浏览器和 HTML 解析器解析。 在底层的实现上，Vue 将模板编译成 虚拟 DOM 渲染函数。结合响应系统，Vue 能够智能地计算出最少需要重新渲染多少组件，并把 DOM 操作次数减到最少。</p>
+<h3 id="1-插入为文本"><a href="#1-插入为文本" class="headerlink" title="1.插入为文本"></a>1.插入为文本</h3><p>数据绑定最常见的形式就是使用 “Mustache” 语法 (双大括号) 的文本插值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;Message: &#123;&#123; msg &#125;&#125;&lt;<span class="regexp">/span&gt;</span></span><br></pre></td></tr></table></figure>
+<p>只要<code>msg</code>进行了更新，就会反映在 DOM 上。可以使用<code>v-once</code>进行一次性的插值，当数据再次更新后，DOM 将不会发生更新，这样是高效的，但是注意这会影响到其下的子节点的数据更新。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/31/jquery-ajax/#more" rel="contents">
+            <a class="btn" href="/2018/03/05/vue-template/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -980,7 +979,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1026,7 +1025,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1037,7 +1036,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -1048,7 +1047,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

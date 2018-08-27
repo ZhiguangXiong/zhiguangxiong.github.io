@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/27/jquery-function/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/03/es6-promise/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiGuang Xiong">
@@ -268,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/27/jquery-function/" itemprop="url">jQuery中的常用函数</a></h1>
+                <a class="post-title-link" href="/2018/02/03/es6-promise/" itemprop="url">ES6 - Promise</a></h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-27T11:56:34+08:00">
-                2017-12-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-03T17:03:54+08:00">
+                2018-02-03
               </time>
             
 
@@ -303,8 +303,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/《锋利的jQuery》读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">《锋利的jQuery》读书笔记</span>
+                  <a href="/categories/ES6学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6学习笔记</span>
                   </a>
                 </span>
 
@@ -341,10 +341,10 @@
 
       
         
-          <h4 id="each-function-index-Element"><a href="#each-function-index-Element" class="headerlink" title="each(function(index, Element))"></a>each(function(index, Element))</h4><p>遍历一个jQuery对象，为每个匹配元素执行一个函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"li"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">index</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(index + <span class="string">":"</span> + $(<span class="keyword">this</span>).text());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+          <p><code>Promise</code>是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。<code>Promise</code>简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，<code>Promise</code>是一个对象，从它可以获取异步操作的消息。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/27/jquery-function/#more" rel="contents">
+            <a class="btn" href="/2018/02/03/es6-promise/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -395,7 +395,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/21/jquery-event/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/19/js-object-oriented/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiGuang Xiong">
@@ -414,7 +414,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/21/jquery-event/" itemprop="url">jQuery中的事件与动画</a></h1>
+                <a class="post-title-link" href="/2018/01/19/js-object-oriented/" itemprop="url">面向对象的程序设计</a></h1>
         
 
         <div class="post-meta">
@@ -426,487 +426,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-21T13:08:05+08:00">
-                2017-12-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/《锋利的jQuery》读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">《锋利的jQuery》读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="1-jQuery中的事件"><a href="#1-jQuery中的事件" class="headerlink" title="1.jQuery中的事件"></a>1.jQuery中的事件</h3><h4 id="加载DOM"><a href="#加载DOM" class="headerlink" title="加载DOM"></a>加载DOM</h4><p>在页面加载完毕后，浏览器会为DOM元素添加事件，常规的JavaScript中使用<code>window.onload</code>方法，jQuery中使用<code>$(document).ready()</code>方法。但两者之间有细微的区别：</p>
-<ul>
-<li><code>window.onload</code>方法是在网页中所有的元素（包括所有关联文件）完全加载到浏览器后才执行；<code>$(document).ready()</code>方法注册的事件处理程序，在DOM完全就绪后就可以被调用；</li>
-<li>JavaScript的<code>onload</code>事件一次只能保存对一个函数的引用，会自动用后面的函数覆盖前面的函数；每次调用<code>$(document).ready()</code>方法都会在现有的行为上追加新的行为，这些行为函数会依次执行。</li>
-<li><code>$(window).load(function(){……})</code>等价于<code>window.onload=function(){……}</code>；</li>
-<li><code>$(document).ready(function(){……})</code>等价于<code>$(function(){……})</code>，<code>$(document)</code>也可以简写为<code>$()</code>；</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/21/jquery-event/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/14/jquery-dom/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhiGuang Xiong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZG-X's Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/14/jquery-dom/" itemprop="url">jQuery中的DOM操作</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T11:56:34+08:00">
-                2017-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/《锋利的jQuery》读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">《锋利的jQuery》读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>DOM是Document Object Model的缩写，即文档对象模型；DOM是一种与浏览器、平台、语言无关的接口，使用该接口可以轻松地访问页面中所有的标准组件，DOM操作分为：DOM Core、HTML-DOM和CSS-DOM：</p>
-<ul>
-<li>DOM Core并不专属于JavaScript，任何一种支持DOM的程序设计语言都可以使用，其中有<code>getElementById()</code>、<code>getElementsByTagName()</code>、<code>getAttribute()</code>和<code>setAttribute()</code>等方法；</li>
-<li>在使用JavaScript和DOM为HTML文件编写脚本时，有许多专属于HTML-DOM的属性（如<code>document.forms</code>、<code>element.src</code>）；</li>
-<li>CSS-DOM技术的主要作用是获取和设置<code>style</code>对象的各种属性；</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/14/jquery-dom/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/10/jquery-selector/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhiGuang Xiong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZG-X's Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/10/jquery-selector/" itemprop="url">jQuery中的选择器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-10T21:43:36+08:00">
-                2017-12-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/《锋利的jQuery》读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">《锋利的jQuery》读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>选择器是jQuery的根基，jQuery中对事件处理、遍历DOM和Ajax操作都依赖于选择器。利用jQuery选择器可以快速找出特定的DOM元素，然后为其添加相应的行为。</p>
-<h3 id="1-选择器"><a href="#1-选择器" class="headerlink" title="1.选择器"></a>1.选择器</h3><h4 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h4><table>
-<thead>
-<tr>
-<th style="text-align:left">选择器</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>$(&quot;#id&quot;)</code></td>
-<td style="text-align:left">根据给定的<code>id</code>匹配元素</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>$(&quot;.class&quot;)</code></td>
-<td style="text-align:left">根据给定的类名匹配元素</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>$(&quot;element&quot;)</code></td>
-<td style="text-align:left">根据给定的元素名匹配元素</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>$(&quot;\*&quot;)</code></td>
-<td style="text-align:left">匹配所有元素</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>$(&quot;E, F&quot;)</code></td>
-<td style="text-align:left">多元素选择器，同时匹配元素<code>E</code>或元素<code>F</code></td>
-</tr>
-</tbody>
-</table>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/10/jquery-selector/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/05/dom/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhiGuang Xiong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZG-X's Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/05/dom/" itemprop="url">DOM</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-05T19:20:36+08:00">
-                2017-12-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T20:00:31+08:00">
+                2018-01-19
               </time>
             
 
@@ -966,11 +487,458 @@
 
       
         
-          <h2 id="Node类型"><a href="#Node类型" class="headerlink" title="Node类型"></a>Node类型</h2><p>DOM1级定义了Node接口，该接口由DOM中的所有节点类型实现；Node接口在JavaScript中作为Node类型来实现，除IE外的所有浏览器都可以访问到这个类型；JavaScript中所有节点类型都继承自Node类型，因此所有节点类型都共享着相同的基本属性和方法；每个节点都有<code>nodeType</code>属性，用于表明节点的类型：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Node.ELEMENT_NODE(<span class="number">1</span>)</span><br><span class="line">Node.ATTRIBUTE_NODE(<span class="number">2</span>)</span><br><span class="line">Node.TEXT_NODE(<span class="number">3</span>)</span><br><span class="line">Node.CDATA_SECTION_NODE(<span class="number">4</span>)</span><br><span class="line">Node.ENTITY_REFERENCE_NODE(<span class="number">5</span>)</span><br><span class="line">Node.ENTITY_NODE(<span class="number">6</span>)</span><br><span class="line">Node.PROCESSING_INSTRUCTION_NODE(<span class="number">7</span>)</span><br><span class="line">Node.COMMENT_NODE(<span class="number">8</span>)</span><br><span class="line">Node.DOCUMENT_NODE(<span class="number">9</span>)</span><br><span class="line">Node.DOCUMENT_TYPE_NODE(<span class="number">10</span>)</span><br><span class="line">Node.DOCUMENT_FRAGMENT_NODE(<span class="number">11</span>)</span><br><span class="line">Node.NOTATION_NODE(<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+          <h2 id="1-理解对象"><a href="#1-理解对象" class="headerlink" title="1 理解对象"></a>1 理解对象</h2><h3 id="1-1-属性类型"><a href="#1-1-属性类型" class="headerlink" title="1.1 属性类型"></a>1.1 属性类型</h3><h4 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h4><p>数据属性包含一个数据值的位置，可以读取和写入值：</p>
+<ul>
+<li><code>[[Configurable]]</code>（默认为<code>true</code>）：表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性；</li>
+<li><code>[[Enumerable]]</code>（默认为<code>true</code>）：表示能否通过for-in循环返回属性；</li>
+<li><code>[[Writable]]</code>（默认为<code>true</code>）：表示能否修改属性的值；</li>
+<li><code>[[Value]]</code>（默认为<code>undefined</code>）：包含该属性的数据值；</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/05/dom/#more" rel="contents">
+            <a class="btn" href="/2018/01/19/js-object-oriented/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/js-event/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhiGuang Xiong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZG-X's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/13/js-event/" itemprop="url">事件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T15:52:56+08:00">
+                2018-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/《JavaScript高级程序设计》读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">《JavaScript高级程序设计》读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h2><p>事件流描述的是从页面中接收事件的顺序，但IE的事件流是事件冒泡流，而Netscape Communicator的事件流是事件捕获流；</p>
+<h3 id="1-事件冒泡"><a href="#1-事件冒泡" class="headerlink" title="1.事件冒泡"></a>1.事件冒泡</h3><p>事件冒泡：事件开始时由最具体的元素（文档中嵌套层次最深的节点）接收，然后逐级向上传播到较为不具体的节点（文档）；<br>IE5.5及更早版本中的事件冒泡会跳过<html>元素（从<body>跳到document），IE9/Firefox/Chrome/Safari将事件一直冒泡到window 对象;</body></html></p>
+<h3 id="2-事件捕获"><a href="#2-事件捕获" class="headerlink" title="2.事件捕获"></a>2.事件捕获</h3><p>事件捕获：不太具体的节点应更早接收到事件，而最具体的节点应最后接收到事件，目的在于在事件到达预定目标前捕获它；<br>IE9/Safari/Chrome/Opera/Firefox也都支持事件捕获流模型；尽管“DOM2级事件”规范要求事件应从document对象开始传播，但浏览器都是从window对象开始捕获事件的；</p>
+<h3 id="3-DOM事件流"><a href="#3-DOM事件流" class="headerlink" title="3.DOM事件流"></a>3.DOM事件流</h3><p>“DOM2级事件”规定的事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段；</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/13/js-event/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/dom-extend/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhiGuang Xiong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZG-X's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/04/dom-extend/" itemprop="url">DOM扩展</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T13:40:13+08:00">
+                2018-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/《JavaScript高级程序设计》读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">《JavaScript高级程序设计》读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h2><p>Selectors API Level 1的核心是两个方法：<code>querySelector()</code>和<code>querySelectorAll()</code>，在兼容的浏览器中可通过<code>Document</code>及<code>Element</code>类型的实例调用，目前已完全支持的浏览器有IE8+/Firefox3.5+/Safari3.1+/Chrome/Opera10+；</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/04/dom-extend/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/31/jquery-ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhiGuang Xiong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZG-X's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/31/jquery-ajax/" itemprop="url">jQuery与Ajax的应用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-31T14:23:17+08:00">
+                2017-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/《锋利的jQuery》读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">《锋利的jQuery》读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="jQuery-ajax-settings"><a href="#jQuery-ajax-settings" class="headerlink" title="jQuery.ajax([settings])"></a>jQuery.ajax([settings])</h4><p>下面的例子发送了一个GET请求：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">'xxx.php'</span>,</span><br><span class="line">    method: <span class="string">'GET'</span>,</span><br><span class="line">    data: &#123; <span class="attr">name</span>: <span class="string">'Byron'</span>, <span class="attr">age</span>: <span class="number">24</span>, <span class="attr">sex</span>: <span class="string">'Male'</span> &#125;</span><br><span class="line">&#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">&#125;).fail(<span class="function"><span class="keyword">function</span>(<span class="params">jqXHR, textStatus</span>)</span>&#123;</span><br><span class="line">    consloe.log(textStatus);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/31/jquery-ajax/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1012,7 +980,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1058,7 +1026,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1069,7 +1037,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -1080,7 +1048,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
